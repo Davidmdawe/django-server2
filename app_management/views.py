@@ -141,7 +141,7 @@ def get_store_data(request):
         # Generate a list of datetime objects for the entire month (with timezone awareness)
         start_date = timezone.localize(datetime(int(year), month_number, 1, 0, 0, 0))
         end_date = timezone.localize(datetime(int(year), month_number, last_day, 23, 59, 59))
-    stores_ids=Menu.objects.filter(menu_date__gte=start_date,menu_date__lte=end_date).values('store_id')
+    stores_ids=Menu.objects.values('store_id')
     try:
         data = []  # Initialize the data list
         if selected_province == 'all':
